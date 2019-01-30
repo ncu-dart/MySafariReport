@@ -6,3 +6,6 @@
 
 ## 使用方法
 於任何頁面點擊網址列右邊的![圖示](./icon/icon48.png)，即可進入報表頁面
+
+## 問題回報或功能建議
+請使用本專案的 [issues](https://github.com/ncu-dart/MySafariReport/issues)分頁進行回報
