@@ -9,3 +9,5 @@
 
 ## 問題回報或功能建議
 請使用本專案的 [issues](https://github.com/ncu-dart/MySafariReport/issues)分頁進行回報
+
+## [更新紀錄](./Change_Log.md)
