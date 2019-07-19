@@ -19,34 +19,34 @@
 - 本專案程式碼僅供學術使用，禁止任何未經許可的商業用途。
 
 ## 資料夾架構
----/icon: 專案圖標  
- |-/Release: 所有推送版本的紀錄（最終穩定版本為1.214）  
- |  
- |-/活動抽獎: 抽獎活動紀錄  
- |  
- |-/Change_Log.md: 版本更新紀錄，停用許久  
- |  
- |-/privacy_policy.md: 使用者隱私權協議副本  
- |  
- |-/README.md  
- |  
- --/Source  
-    |-/Client: Chrome Extesion(最後一版本)  
-    |   |-frameworks: 使用到的額外套件功能  
-    |   |-modules: 主要功能模組  
-    |   |   |-/background: 背景工作模組，主要資料蒐集傳送、控制的模組  
-    |   |   |-/footer: 頁面共通的頁腳  
-    |   |   |-/header: 頁面共通的頁首  
-    |   |   |-/icons: 各個頁面使用到的icons  
-    |   |   |-/notiify: 通知功能模組  
-    |   |   |-/privacy: 隱私權宣告頁面  
-    |   |   |-/report: 報表模組，使用者服務功能  
-    |   |   --/reward: 積分功能相關模組  
-    |   |  
-    |   --manifest.json: 擴充功能設定檔案  
-    |  
-    |-/Relay_Server: 中繼HTTPS伺服器  
-    |  
-    |-/Main_Server: 主要運算伺服器  
-    |  
-    --README.md  
+>---/icon: 專案圖標  
+> |-/Release: 所有推送版本的紀錄（最終穩定版本為1.214）  
+> |  
+> |-/活動抽獎: 抽獎活動紀錄  
+> |  
+> |-/Change_Log.md: 版本更新紀錄，停用許久  
+> |  
+> |-/privacy_policy.md: 使用者隱私權協議副本  
+> |  
+> |-/README.md  
+> |  
+> --/Source  
+>    |-/Client: Chrome Extesion(最後一版本)  
+>    |   |-frameworks: 使用到的額外套件功能  
+>    |   |-modules: 主要功能模組  
+>    |   |   |-/background: 背景工作模組，主要資料蒐集傳送、控制的模組  
+>    |   |   |-/footer: 頁面共通的頁腳  
+>    |   |   |-/header: 頁面共通的頁首  
+>    |   |   |-/icons: 各個頁面使用到的icons  
+>    |   |   |-/notiify: 通知功能模組  
+>    |   |   |-/privacy: 隱私權宣告頁面  
+>    |   |   |-/report: 報表模組，使用者服務功能  
+>    |   |   --/reward: 積分功能相關模組  
+>    |   |  
+>    |   --manifest.json: 擴充功能設定檔案  
+>    |  
+>    |-/Relay_Server: 中繼HTTPS伺服器  
+>    |  
+>    |-/Main_Server: 主要運算伺服器  
+>    |  
+>    --README.md  
