@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="可兌換通知">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Ting-Rui, Chen">
+    <title>我的網路使用報告-可兌換通知 by Data Analytics Research Team</title>
+    <link rel="icon" href="/modules/icons/icon48.png">
+
+    <!-- Materialize-->
+    <link href="/frameworks/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="../report/css/admin-materialize.min.css" rel="stylesheet">
+
+    <!-- Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3><img src="../icons/icon48.png" alt="icon"><span>「我的網路使用報告」可兌換通知</span></h3>
+                            <p>親愛的使用者您好！<br>您的點數已可以兌換：</p>
+                            <div class="card blue-grey lighten-4">
+                                <div class="card-content">
+                                    <div id="loading_mask" class="center">
+                                        <div class="preloader-wrapper big active">
+                                            <div class="spinner-layer spinner-blue">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spinner-layer spinner-red">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spinner-layer spinner-yellow">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spinner-layer spinner-green">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table hidden="True">
+                                        <thead>
+                                            <tr>
+                                                <th>名稱</th>
+                                                <th>點數</th>
+                                                <th>可換數量</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="can_exchange_content"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <p>快到擴充功能的積分中心兌換吧！</p>
+                            <p>有任何問題，請聯絡開發人員！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+</body>
+<!--  Scripts  -->
+<script src="/frameworks/jQuery/jquery-3.3.1.min.js"></script>
+<script src="/frameworks/materialize/js/materialize.js"></script>
+<script src="/modules/reward/reward.js"></script>
+<script src="./notify.js"></script>
+<script src="/frameworks/showdown/dist/showdown.min.js"></script>
+<script src="/modules/privacy/js/privacy_policy.js"></script>
+<script src="/modules/footer/init.js"></script>
+
+</html>

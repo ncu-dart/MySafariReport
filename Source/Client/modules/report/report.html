@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="description" content="使用者個人化網路使用狀況報表">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="author" content="Ting-Rui, Chen">
+        <title>我的網路使用報告 by Data Analytics Research Team</title>
+        <link rel="icon" href="../icons/icon48.png">
+
+        <!-- DataTable -->
+        <link href="../DataTables/datatables.min.css" rel="stylesheet">
+
+        <!-- Others -->
+        <link href="./css/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+        <link href="./css/jqvmap.css" rel="stylesheet">
+
+        <!-- Fullcalendar-->
+        <link href="../fullcalendar/fullcalendar.min.css" rel="stylesheet">
+
+        <!-- Materialize-->
+        <link href="../materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="./css/admin-materialize.min.css" rel="stylesheet">
+
+        <!-- Material Icons-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+<body class="has-fixed-sidenav">
+    <header>
+        <div class="navbar-fixed">
+            <nav class="navbar white">
+                <div class="nav-wrapper">
+                    <a class="brand-logo grey-text text-darken-4" data-title="overall">總覽</a>
+                    <ul id="nav-mobile" class="right">
+                        <li><a id="settings" ><i class="material-icons">settings</i></a></li>
+                    </ul>
+                    <a href="#!" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
+                </div>
+            </nav>
+        </div>
+
+        <ul id="slide-out" class="sidenav sidenav-fixed orange lighten-2">
+            <li><a href="../report/overall.html" class="logo-container">我的網路使用報告<i class="material-icons left">assessment</i></a></li>
+            <li class="no-padding">
+                <li><a href="#!" class="waves-effect active">總覽</a></li>
+
+            </li>
+        </ul>
+    </header>
+
+
+
+    <main class="gray">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-toolbar">
+                            <div class="card-title">
+                                3天內最常造訪的網站
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="fixed-chart-wrapper">
+                                <canvas id="stacked-bar-chart" class="card-chart" width="0" height="0"  style="display: block; width: 572px; height: 572px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-toolbar">
+                            <div class="card-title">
+                                7天內最常造訪的網站
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="fixed-chart-wrapper">
+                                <canvas id="bar-chart" class="card-chart" width="0" height="0"  style="display: block; width: 572px; height: 572px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-toolbar">
+                            <div class="card-title">
+                                14天內最常造訪的網站
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="fixed-chart-wrapper">
+                                <canvas id="stacked-bar-chart2" class="card-chart" width="0" height="0"  style="display: block; width: 572px; height: 572px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-toolbar">
+                            <div class="card-title">
+                                30天內最常造訪的網站
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="fixed-chart-wrapper">
+                                <canvas id="bar-chart2" class="card-chart" width="0" height="0"  style="display: block; width: 572px; height: 572px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-toolbar">
+                            <div class="card-title">
+                                60天內最常造訪的網站
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="fixed-chart-wrapper">
+                                <canvas id="stacked-bar-chart2" class="card-chart" width="0" height="0"  style="display: block; width: 572px; height: 572px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-toolbar">
+                            <div class="card-title">
+                                90天內最常造訪的網站
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="fixed-chart-wrapper">
+                                <canvas id="bar-chart2" class="card-chart" width="0" height="0"  style="display: block; width: 572px; height: 572px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-toolbar">
+                            <div class="card-title">
+                                180天內最常造訪的網站
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="fixed-chart-wrapper">
+                                <canvas id="stacked-bar-chart2" class="card-chart" width="0" height="0"  style="display: block; width: 572px; height: 572px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-toolbar">
+                            <div class="card-title">
+                                360天內最常造訪的網站
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="fixed-chart-wrapper">
+                                <canvas id="bar-chart2" class="card-chart" width="0" height="0"  style="display: block; width: 572px; height: 572px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <!--  Scripts  -->
+    <script src="../jQuery/jquery-3.3.1.min.js"></script>
+    <script src="../materialize/js/materialize.js"></script>
+    <script src="../chartJS/Chart.bundle.min.js"></script>
+
+    <!-- External libraries -->
+
+    <!-- jqvmap -->
+    <script type="text/javascript" src="./js/jqvmap/jquery.vmap.min.js"></script>
+    <script type="text/javascript" src="./js/jqvmap/jquery.vmap.world.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/jqvmap/jquery.vmap.sampledata.js"></script>
+
+    <!-- ChartJS -->
+    <script type="text/javascript" src="./js/Chart.Financial.js"></script>
+
+
+    <script src="../fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="../DataTables/datatables.min.js"></script>
+    <script src="../imagesLoaded/imagesloaded.pkgd.min.js"></script>
+    <script src="../masonry/masonry.pkgd.min.js"></script>
+
+    <!-- Initialization script -->
+    <script src="./js/admin.js"></script>
+        <!-- Page Script -->
+        <!-- <script src="./js/xxx.js"></script> -->
+    <script src="./js/init.js"></script>
+    <script src="./report.js"></script>
+
+
+
+
+</body>
+</html>

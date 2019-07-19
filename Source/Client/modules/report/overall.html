@@ -1,0 +1,181 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="使用者個人化網路使用狀況報表">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Ting-Rui, Chen">
+    <title>我的網路使用報告 by Data Analytics Research Team</title>
+    <link rel="icon" href="/modules/icons/icon48.png">
+
+    <!-- DataTable -->
+    <link href="/frameworks/DataTables/datatables.min.css" rel="stylesheet">
+
+    <!-- Others -->
+    <link href="./css/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="./css/jqvmap.css" rel="stylesheet">
+
+    <!-- Fullcalendar-->
+    <link href="/frameworks/fullcalendar/fullcalendar.min.css" rel="stylesheet">
+
+    <!-- Materialize-->
+    <link href="/frameworks/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="./css/admin-materialize.min.css" rel="stylesheet">
+    <link href="/frameworks/noUiSlider/nouislider.css" rel="stylesheet">
+
+    <!-- Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="has-fixed-sidenav">
+    <header id="header_auto"></header>
+    <main class="gray">
+        <div class="container">
+            <div id="debug_info" class="row" hidden="True">
+                <div class="col s11 m11 l10">
+                    <div class="card">
+                        <div class="card-content">
+                            <span id="user-info-title" class="card-title">擴充功能資訊＆背景工作狀態</span>
+                            <ul>
+                                <li>Google 識別碼: <text id="user-info-gid" class="blue-text">資訊取得中⋯⋯</text></li>
+                                <li>距離下次資料傳送剩餘: <text id="background-stat-nextSend" class="blue-text">資訊取得中⋯⋯</text></li>
+                                <li>資料庫中個人書籤同步狀態: <text id="background-stat-BM" class="blue-text">資訊取得中⋯⋯</text></li>
+                                <li>資料庫中個人瀏覽紀錄同步狀態: <text id="background-stat-history" class="blue-text">資訊取得中⋯⋯</text></li>
+                                <li>背景執行中的動作: <text id="background-stat-working" class="blue-text">資訊取得中⋯⋯</text></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col s11 m11 l10 ">
+                    <div id="DomainTimes" class="card">
+                        <div class="card-content">
+                            <div class="progress cyan lighten-2">
+                                <div class="indeterminate cyan accent-2"></div>
+                            </div>
+                            <span id="DomainTimes-title" class="card-title">Top-10 網站造訪次數圖</span>
+                            <div id="DomainTimes-slider"></div>
+                        </div>
+                        <div id="DomainTimes-buttons"></div>
+                        <div class="divider"></div>
+                        <div class="card-content">
+                            <canvas class="card-chart" id="overall-DomainTimes-areaChart" height="350"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s11 m11 l10 ">
+                    <div id="CateTimes" class="card">
+                        <div class="card-content">
+                            <div class="progress cyan lighten-2">
+                                <div class="indeterminate cyan accent-2"></div>
+                            </div>
+                            <span id="CateTimes-title" class="card-title">Top-10 網站類型造訪次數圖</span>
+                            <div id="CateTimes-slider"></div>
+                        </div>
+                        <div id="CateTimes-buttons"></div>
+                        <div class="divider"></div>
+                        <div class="card-content">
+                            <canvas class="card-chart" id="overall-CateTimes-areaChart" height="350"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s11 m11 l10 ">
+                    <div id="Weekday-Cate" class="card">
+                        <div class="card-content">
+                            <span id="Weekday-Cate-title" class="card-title">週間每日上網類型圖</span>
+                            <div class="progress cyan lighten-2">
+                                <div class="indeterminate cyan accent-2"></div>
+                            </div>
+                        </div>
+                        <div id="Weekday-Cate-buttons"></div>
+                        <div class="card-content">
+                            <canvas class="card-chart" id="overall-Weekday-Cate-stackedBarChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 ">
+                    <div class="card" , id="nodata" , hidden="True">
+                        <div class="card-content">
+                            <span class="card-title"> 目前收集的資料量不足以繪製圖表，請隔 7日後再試</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer-auto"></footer>
+
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>資料正在產生中</h4>
+            <p>3秒後，將自動重新載入！</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">ＯＫ</a>
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4>伺服器正在製作您的個人報告表</h4>
+            <p>如果您是剛安裝好本擴充功能，請隔幾分鐘後再來查看。<br>如果您在近7日有刪除歷史紀錄，請使用7天以上再進入此頁面。</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">ＯＫ</a>
+        </div>
+    </div>
+
+
+</body>
+
+<!--  Scripts  -->
+<script src="/frameworks/jQuery/jquery-3.3.1.min.js"></script>
+<script src="/frameworks/materialize/js/materialize.js"></script>
+<script src="/frameworks/chartJS/Chart.bundle.min.js"></script>
+
+<!-- External libraries -->
+<script src="/frameworks/noUiSlider/nouislider.js"></script>
+<script src="/frameworks/showdown/dist/showdown.min.js"></script>
+
+
+<!-- jqvmap -->
+<script type="text/javascript" src="./js/jqvmap/jquery.vmap.min.js"></script>
+<script type="text/javascript" src="./js/jqvmap/jquery.vmap.world.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/jqvmap/jquery.vmap.sampledata.js"></script>
+
+<!-- ChartJS -->
+<script type="text/javascript" src="./js/Chart.Financial.js"></script>
+
+
+<!-- <script src="/frameworks/fullcalendar/fullcalendar.min.js"></script> -->
+<script type="text/javascript" src="/frameworks/DataTables/datatables.min.js"></script>
+<script src="/frameworks/imagesLoaded/imagesloaded.pkgd.min.js"></script>
+<script src="/frameworks/masonry/masonry.pkgd.min.js"></script>
+
+<!-- Initialization script -->
+<script src="/modules/privacy/js/privacy_policy.js"></script>
+<script src="/modules/header/init.js"></script>
+<script src="/modules/footer/init.js"></script>
+<script src="/modules/reward/reward.js"></script>
+<script src="./js/report.js"></script>
+<script src="./js/overall.js"></script>
+<!-- Page Script -->
+<!-- <script src="./js/xxx.js"></script> -->
+
+<script src="./js/init.js"></script>
+
+
+</html>

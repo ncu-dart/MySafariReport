@@ -1,0 +1,25 @@
+{
+   "author": "National Central University CSIE Data Analytics Research Team",
+   "background": {
+      "page": "/modules/background/background.html"
+   },
+
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com https://www.google-analytics.com https://connect.facebook.net https://docs.google.com https://www.google.com https://cse.google.com https://clients1.google.com https://cdn.mxpnl.com https://fonts.googleapis.com https://ajax.googleapis.com/ajax/libs/ https://cdn.datatables.net https://fonts.googleapis.com/icon https://cdnjs.cloudflare.com/ajax/libs/; object-src  'self'",
+   "description": "提供您個人化網路使用報告。2019年07月20日服務結束，請自行移除本擴充功能。",
+   "icons": {
+      "128": "/modules/icons/icon128.png",
+      "16": "/modules/icons/icon16.png",
+      "48": "/modules/icons/icon48.png",
+      "24": "/modules/icons/icon24.png",
+      "341": "/modules/icons/icon341.png"
+   },
+   "manifest_version": 2,
+   "name": "網路使用報告",
+
+   "permissions": [ "alarms", "storage", "idle", "topSites", "chrome://favicon/", "https://ncu-dart-chrome-ext-cache.herokuapp.com/*", "https://ncu-dart-chrome-ext-cache-beta.herokuapp.com/*", "https://fortiguard.com/webfilter?q=*",  "https://raw.githubusercontent.com/ncu-dart/MySafariReport/*","bookmarks", "unlimitedStorage", "history", "tabs", "identity", "identity.email" ],
+   "version": "1.302.1907.1816",
+    "browser_action": {
+        "default_title": "我的網路使用報告",
+        "default_icon": "/modules/icons/icon128.png"
+    }
+}

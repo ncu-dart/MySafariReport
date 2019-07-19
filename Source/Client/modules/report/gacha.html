@@ -1,0 +1,268 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="使用者個人化網路使用狀況報表">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Ting-Rui, Chen">
+    <title>我的網路使用報告 by Data Analytics Research Team</title>
+    <link rel="icon" href="/modules/icons/icon48.png">
+
+    <!-- DataTable -->
+    <link href="/frameworks/DataTables/datatables.min.css" rel="stylesheet">
+
+    <!-- Others -->
+    <link href="./css/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="./css/jqvmap.css" rel="stylesheet">
+
+    <!-- Fullcalendar-->
+    <link href="/frameworks/fullcalendar/fullcalendar.min.css" rel="stylesheet">
+
+    <!-- Materialize-->
+    <link href="/frameworks/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="./css/admin-materialize.min.css" rel="stylesheet">
+    <link href="/frameworks/noUiSlider/nouislider.css" rel="stylesheet">
+
+    <!-- Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="has-fixed-sidenav">
+    <header id="header_auto"></header>
+    <main class="gray">
+        <div id="loading_mask" class="center">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" hidden='True'>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">抽獎結果</span>
+
+                            <div class="card-content">
+                                <p>程式碼： <a href="https://github.com/ncu-dart/MySafariReport/blob/master/%E6%B4%BB%E5%8B%95%E6%8A%BD%E7%8D%8E/%E6%8A%BD%E7%8D%8E%E7%A8%8B%E5%BC%8F%E5%8E%9F%E5%A7%8B%E7%A2%BC.ipynb" target='_blank'> GitHub</a> </p>
+                                <p>抽獎結果： <a href="https://docs.google.com/spreadsheets/d/1oX2nieuE9XgqKJ2quaaD9jdMa-BEEquJdcxtuX5vA2M/edit?usp=sharing" target='_blank'> Google Spreadsheet</a> </p>
+                                <p>抽獎歷程紀錄： <a href="https://github.com/ncu-dart/MySafariReport/tree/master/%E6%B4%BB%E5%8B%95%E6%8A%BD%E7%8D%8E/gacha_history" target='_blank'> GitHub</a> </p>
+
+                                <p>百元禮券的中獎者，若在之前已有兌換過禮券，在資料確認後，我們將會自動發出禮券。若在之前沒有兌換過禮券，則必須要確認信箱中的確認信後才可以領取禮券。</p>
+                                <p>獲得千元以上禮券的使用者，請於收到 個人資料確認信後，依照指示回寄確認資訊。</p>
+                                <p>感謝各位的參與，當所有活動結束後，會推送通知。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">抽獎資格</span>
+
+                            <span id="qualify" class="card-title right">讀取中。。。</span>
+
+                            <div class="card-content">
+
+                                <div id="hide-on-no-qualify">
+                                    <hr>
+                                    <p>以下是您在抽獎時的代號，以您留存的信箱進行遮蔽：</p>
+                                    <table class="highlight">
+                                        <thead>
+                                            <tr>
+                                                <th>您的代號</th>
+                                                <th>您的籤數</th>
+                                                <th>您的獲獎的機率(%)</th>
+                                                <th>您在本次抽獎的期望值(元)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="qualify_content_spotlight"></tbody>
+                                    </table>
+                                    <p>中獎機率、期望值僅供參考，實際抽獎結果仍然和您的血統比較有關係。</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">抽獎獎項</span>
+                            <div class="card-content">
+                                <p><i class="material-icons red-text accent-2">looks_one</i> 頭獎：3000元 自選禮券 <span class="light-green accent-1">x 1</span>（抽中需留存詳細個資，列入所得稅）</p>
+                                <p><i class="material-icons orange-text accent-2">looks_two</i> 二獎：2000元 自選禮券 <span class="light-green accent-1">x 2</span>（抽中需留存詳細個資，列入所得稅）</p>
+                                <p><i class="material-icons green-text accent-2">looks_3</i> 三獎：1000元 自選禮券 <span class="light-green accent-1">x 3</span>（抽中需留存詳細個資，列入所得稅）</p>
+                                <p><i class="material-icons blue-text accent-2">money</i> 四獎：100元 7-11禮券 <span class="light-green accent-1">x 14</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">抽獎規則</span>
+                            <div class="card-content">
+                                <p>核心想法：抽籤</p>
+                                <p>所有人都有刻上自己名字的籤，籤數取決於下述計算方式，機率的計算方式為所有人籤數總和除上分別的籤數即為每個人的機率</p>
+                                <p>籤數計算方式如下：</p>
+                                <p>F(x, y) = sqrt(x^2 + y^2)，本式為普通的畢氏定理。若帶入矩陣則針做元素間的計算，算完的維度不變。MEAN(Mx) 對矩陣進行平均數計算。</p>
+                                <p>假設 A是第一種資料的貢獻總數， B是第二種資料的貢獻總數， Ma是第一種資料每天分別的貢獻總數， Mb 是第二種資料每天分別的貢獻總數， D是所有資料中距今最遠那筆距離最新那筆的天數</p>
+                                <br>
+                                <p>E = MEAN(F(Ma, Mb) )</p>
+                                <p>G = F(D, E)</p>
+                                <p>追加籤數 = F( sqrt( F(A, B)), G)</p>
+                                <p>基本籤數 = 3000</p>
+                                <p>總籤數 = 基本籤數 ＋ 追加籤數</p>
+                                <hr>
+                                <p class="light-green accent-2">抽獎流程：從最大獎開始，隨機從籤筒抽出一位，被抽出的人會被從籤筒中移除對應金額的籤數後重複抽出獎項。</p>
+                                <hr>
+                                <p class="yellow accent-1">千元以上獎項：會先以郵件與您約時間通電話以確認相關個資，若您無法在信件送出後三天回覆，則視為自動放棄資格，將會排除您進行重新抽選。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">抽獎資訊統計</span>
+                            <div class="card-content">
+                                <table class="highlight">
+                                        <thead>
+                                            <tr>
+                                                <th>統計資訊</th>
+                                                <th>籤數</th>
+                                                <th>獲獎的機率(%)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="stat_content_spotlight"></tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">抽獎資訊總覽</span>
+                            <div class="card-content">
+                                <table class="highlight">
+                                        <thead>
+                                            <tr>
+                                                <th>＃</th>
+                                                <th>代號</th>
+                                                <th>籤數</th>
+                                                <th>獲獎的機率(%)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="all_content_spotlight"></tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+</body>
+
+<!--  Scripts  -->
+<script src="/frameworks/jQuery/jquery-3.3.1.min.js"></script>
+<script src="/frameworks/materialize/js/materialize.js"></script>
+<script src="/frameworks/chartJS/Chart.bundle.min.js"></script>
+
+<!-- External libraries -->
+<script src="/frameworks/noUiSlider/nouislider.js"></script>
+<script src="/frameworks/showdown/dist/showdown.min.js"></script>
+
+
+<!-- jqvmap -->
+<script type="text/javascript" src="./js/jqvmap/jquery.vmap.min.js"></script>
+<script type="text/javascript" src="./js/jqvmap/jquery.vmap.world.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/jqvmap/jquery.vmap.sampledata.js"></script>
+
+<!-- ChartJS -->
+<script type="text/javascript" src="./js/Chart.Financial.js"></script>
+
+
+<!-- <script src="/frameworks/fullcalendar/fullcalendar.min.js"></script> -->
+<script type="text/javascript" src="/frameworks/DataTables/datatables.min.js"></script>
+<script src="/frameworks/imagesLoaded/imagesloaded.pkgd.min.js"></script>
+<script src="/frameworks/masonry/masonry.pkgd.min.js"></script>
+
+<!-- Initialization script -->
+<script src="/modules/privacy/js/privacy_policy.js"></script>
+<script src="/modules/header/init.js"></script>
+<script src="/modules/footer/init.js"></script>
+<script src="/modules/reward/reward.js"></script>
+<script src="./js/report.js"></script>
+<script src="./js/gacha.js"></script>
+<!-- Page Script -->
+<!-- <script src="./js/xxx.js"></script> -->
+
+<script src="./js/init.js"></script>
+
+
+</html>
