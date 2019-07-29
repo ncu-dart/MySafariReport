@@ -409,7 +409,7 @@ def main(Qfilename):
 
     pool = mp.Pool()
     results = []
-    for x in data['updateCodes']:
+    for x in set(data['updateCodes']):
         res = pool.apply_async(task[x], (Qfilename,))
         results.append(res)
     pool.close()
